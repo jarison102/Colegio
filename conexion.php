@@ -31,6 +31,18 @@ class Conexion {
         return $this->conexion->lastInsertId();
     }
     
+    public function ejecutarConsulta($sql) {
+        // El método ejecutarConsulta() se utiliza para ejecutar consultas SQL que modifican la base de datos (INSERT, UPDATE, DELETE).
+        // Toma una consulta SQL como parámetro y la ejecuta utilizando la conexión PDO.
+        $stmt = $this->conexion->prepare($sql);
+        
+        // Ejecuta la consulta preparada.
+        $stmt->execute();
+        
+        // Esta línea devuelve el último ID insertado después de realizar una consulta INSERT.
+        return $this->conexion->lastInsertId();
+    }
+    
     public function consultar($sql) {
         // El método consultar() se utiliza para ejecutar consultas SQL que recuperan datos de la base de datos.
         // Toma una consulta SQL como parámetro y la prepara utilizando la conexión PDO.
@@ -43,7 +55,21 @@ class Conexion {
         // Devuelve un array que contiene todas las filas devueltas por la consulta.S
         return $sentencia->fetchAll();
     }
+    public function validarRegistroDirectora($correo, $nombre) {
+        $sql = "SELECT * FROM `registro directoras` WHERE Correo = :Correo AND Nombre = :Nombre";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':Correo', $correo, PDO::PARAM_STR);
+        $stmt->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+    
+        return ($count > 0); // Devolver true si se encontraron coincidencias, false de lo contrario
+    }
+    
+    
+
 }
+
 
 try {
     $conexion = new Conexion();

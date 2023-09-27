@@ -18,6 +18,7 @@ if($_POST){
 //consultar datos de la base de datos
 $objconexion =  new conexion();
 $resultado = $objconexion->consultar("SELECT Materia FROM `registro materias`");
+$resultado = $objconexion->consultar("SELECT * FROM `registro profesores`");
 
 //print_r($resultado);
 
@@ -43,7 +44,12 @@ $resultado = $objconexion->consultar("SELECT Materia FROM `registro materias`");
   </div>
   <div class="form-group">
     <label for="Profesor">Nombre Profesor</label>
-    <input type="text" class="form-control" id="Profesor" name="Profesor" placeholder="Profesor">
+    <select name="Profesor" id="Profesor" class="form-control">
+      <?php 
+      foreach($resultado as $nombres):?>
+      <option value="<?php echo $nombres['Nombre']; ?>"><?php echo $nombres['Nombre']; ?></option>
+                <?php endforeach; ?>
+    </select>
   </div>
   <div class="form-group">
     <label for="Materia">Materia</label>
