@@ -4,9 +4,6 @@
 
 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -32,21 +29,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="Asignacion_de_clase.php">Asignacion de clase</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Registro_alumnos.php">Registro alumnos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Registro_Profesores.php">Registro Profesores</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Registro_Materias.php">Registro Materias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Registro_Directores.php">Registro Directores</a>
-          </li>
-
 
         </ul>
         <form class="d-flex" role="Cerrar" action="./login.php">

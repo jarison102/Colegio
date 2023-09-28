@@ -65,6 +65,17 @@ class Conexion {
     
         return ($count > 0); // Devolver true si se encontraron coincidencias, false de lo contrario
     }
+
+    public function validarRegistroAlumno($correo, $nombre) {
+        $sql = "SELECT * FROM `registro alumno` WHERE Correo = :Correo AND Nombre = :Nombre";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':Correo', $correo, PDO::PARAM_STR);
+        $stmt->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+    
+        return ($count > 0); // Devolver true si se encontraron coincidencias, false de lo contrario
+    }
     
     
 

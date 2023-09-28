@@ -15,11 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexionBD = new Conexion();
 
     // Validar el formulario
-    $validado = $conexionBD->validarRegistroDirectora($correo, $nombre);
+    $validado = $conexionBD -> validarRegistroDirectora($correo, $nombre);
+    $validadoA = $conexionBD -> validarRegistroAlumno($correo, $nombre);
 
     if ($validado) {
         // Si se encontraron coincidencias, permitir el acceso.
         $mensaje = "Acceso permitido.";
+        header("location:index.php");
+    }else if ($validadoA){
+        $mensaje = "Acceso permitido.";
+        header("location:indexAlumnos.php");
     } else {
         // Si no se encontraron coincidencias, mostrar un mensaje de error.
         $mensaje = "Acceso denegado. Los datos no existen en la base de datos.";
